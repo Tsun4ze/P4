@@ -37,7 +37,7 @@ if(isset($_POST['addNews']))
 	<h3>Ajouter une nouvelle :</h3>
 	<form method="post" action="">
 		<label for="title">Titre : </label><input type="text" name="title" id="title" /><br /><br />
-		<textarea name="contentNews"></textarea><br /><br />
+		<textarea name="contentNews" id="contentNews"></textarea><br /><br />
 		<input type="submit" name="addNews" value="Poster" />
 	</form>
 </section>

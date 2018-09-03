@@ -10,7 +10,7 @@
 		<script type="text/javascript" src="tinymce/tinymce.min.js"></script>
 		<script>
 			tinymce.init({
-				selector : 'textarea',
+				selector : 'textarea#contentNews',
 				language : 'fr_FR'
 				
 			});
