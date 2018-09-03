@@ -22,8 +22,8 @@ if(isset($_POST['sendCom']))
 	));
 
 
-	header('Location: '.$SERVER['HTTP_REFERER']);
-	exit;
+	header('Location: '.$_SERVER['HTTP_REFERER']);
+	exit();
 }
 ?>
 

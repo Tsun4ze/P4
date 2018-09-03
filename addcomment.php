@@ -14,13 +14,16 @@ if(isset($_POST['addNews']))
 
 		if(!empty($_POST['contentNews']))
 		{
-			$req = $db->prepare('INSERT INTO news (titre, contenu, dateAjout) VALUES(:titre, :contenu, NOW())');
+			$req = $db->prepare('INSERT INTO news (auteur, titre, contenu, dateAjout, dateModif) VALUES(:auteur, :titre, :contenu, NOW(), NOW())');
 			$req->execute(array(
+				'auteur' => $_SESSION['pseudo'],
 				'titre' => $_POST['title'],
 				'contenu' => $_POST['contentNews']
+
 			));
 
-			header('Location : index.php');
+
+			header('Location: index.php');
 			exit();
 		}
 		$errorAddNews = 'L\'article est vide';
@@ -35,7 +38,7 @@ if(isset($_POST['addNews']))
 <section>
 	<?php if(isset($errorAddNews)){ echo '<h2>'.$errorAddNews.'</h2>';} ?>
 	<h3>Ajouter une nouvelle :</h3>
-	<form method="post" action="">
+	<form method="post" action="addcomment.php">
 		<label for="title">Titre : </label><input type="text" name="title" id="title" /><br /><br />
 		<textarea name="contentNews" id="contentNews"></textarea><br /><br />
 		<input type="submit" name="addNews" value="Poster" />
