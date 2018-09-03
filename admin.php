@@ -17,7 +17,7 @@ if(!isset($_SESSION['id']))
 
 
 	<a class="panelRedir" href="panelcommentaires.php">Gestion Commentaires</a>
-	<a class="panelRedir" href="addcomment.php">Ajouter une nouvelle</a>
+	<a class="panelRedir" href="addnews.php">Ajouter une nouvelle</a>
 	
 	<a class="panelRedir"href="listenews.php">Liste des news</a>
 	

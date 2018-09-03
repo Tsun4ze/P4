@@ -52,7 +52,7 @@ $dataCom->execute();
 				<td><?= nl2br(htmlspecialchars($rowCom['dateAjoutR'])) ?></td>
 				
 				<td>
-					<form method="post" action="newsaction.php">
+					<form method="post" action="updatenews.php?chapter=<?= $rowCom['id'] ?>">
 						<input type="hidden" name="idNews1" value="<?= $rowCom['id'] ?>" />
 						
 						<input type="submit" name="udptNews" value="Modifier" />

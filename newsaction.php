@@ -1,7 +1,8 @@
 <?php
 require ('config.php');
-if(isset($_POST['supprNews']))
 
+// DELETE POSTS
+if(isset($_POST['supprNews']))
 {
 	
 	$req = $db->prepare('DELETE FROM news WHERE id = :id ');
@@ -15,3 +16,4 @@ if(isset($_POST['supprNews']))
 	header('Location: '.$_SERVER['HTTP_REFERER']);
 	exit();
 }
+
