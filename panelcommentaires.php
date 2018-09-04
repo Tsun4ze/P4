@@ -25,7 +25,7 @@ $dataCom->execute();
 	?>
 	<h2>Liste de total des commentaires :</h2>
 
-	<table style="width:100%;">
+	<table style="width:100%;" class="table-striped table-bordered table-hover">
 
 		<thead class="tabEnt">
 			<tr>

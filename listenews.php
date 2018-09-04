@@ -28,7 +28,7 @@ $dataCom->execute();
 	?>
 	<h2>Liste de total des news :</h2>
 
-	<table style="width:100%;">
+	<table style="width:100%;" class="table-bordered table-striped">
 
 		<thead class="tabEnt">
 			<tr>
