@@ -1,0 +1,65 @@
+a, a:visited
+{
+	text-decoration: none;
+}
+
+section
+{
+	padding-top: 80px;
+}
+/* HEADER */
+.mainHeader
+{
+	background-color: rgba(70, 70, 70, 0.3) ;
+
+	
+}
+.titreHeader
+{
+
+	margin: auto;
+	width:100%;
+	text-align: center;
+}
+
+.listeHeader
+{
+	margin: auto;
+}
+
+.listeItem
+{
+	margin: auto;
+	padding: auto;
+}
+
+/*FOOTER*/
+.footer
+{
+	margin-top: 10px;
+	background-color: black;
+}
+
+/* INDEX */
+.sampleNews
+{
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+/* TABS*/
+table
+{
+	border-collapse: collapse;
+}
+
+th, td
+{
+	border: 1px solid black;
+}
+
+.panelRedir
+{
+	text-decoration: underline;
+}
