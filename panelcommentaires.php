@@ -31,7 +31,7 @@ $dataCom->execute();
 			<tr>
 				
 				<th>Auteur</th>
-				<th style="">Commentaire</th>
+				<th>Commentaire</th>
 				<th>Date d'ajout</th>
 				<th colspan="2">Action</th>
 				

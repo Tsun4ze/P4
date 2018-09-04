@@ -12,7 +12,7 @@ require('header.php');
 */
 ?>
 
-<section>
+<section style="height: 896px;">
 	<h3>Panel d'administration :</h3>
 	<br />
 

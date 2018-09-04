@@ -1,7 +1,7 @@
 
 body
 {
-background-image: url("background.jpg");
+background-image: url("Alaska.jpg");
 background-repeat: no-repeat;
 background-position: right-top;
 background-attachment: fixed;
@@ -28,7 +28,7 @@ section
 }
 .titreHeader
 {
-
+	background-color: rgba(233, 236, 239, 0.5) !important;
 	margin: auto;
 	width:100%;
 	text-align: center;
@@ -48,6 +48,9 @@ section
 /*FOOTER*/
 .footer
 {
+	position: relative;
+	bottom: 0;
+	width: 100%;
 	margin-top: 10px;
 	background-color: black;
 }
@@ -55,11 +58,12 @@ section
 /* INDEX */
 .sampleNews
 {
+	background-color: rgba(115, 115, 115, 0.5);
 	margin: 5px !important;
 	text-align: center;
 	border: 1px solid black;
 	border-radius: 5px;
-	box-shadow: 2px 2px 5px gray;
+	box-shadow: 2px 2px 5px black;
 }
 
 .newsTiles
@@ -71,16 +75,21 @@ section
 /* TABS*/
 table
 {
+
 	border-collapse: collapse;
 	text-align: center;
 }
 
-
+.tabEnt
+{
+	color: black;
+	text-shadow: 1px 1px 0.5px gray;
+}
 
 th, td
 {
 
-	border: 1px solid black;
+	border: 1px solid black !important;
 }
 
 .panelRedir

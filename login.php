@@ -55,7 +55,7 @@ require('header.php');
 <section>
 	<div style="text-align:center;">
 		<h2>Login :</h2>
-		<form method="post" action="login.php" style="text-align:left;">
+		<form method="post" action="login.php" style="text-align:left; margin-left: 45%;">
 			<p>
 				<label for="mailLog">Pseudo : </label><br />
 				<input type="text" name="userLog" id="mailLog" /><br />
