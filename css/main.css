@@ -1,3 +1,12 @@
+
+body
+{
+background-image: url("background.jpg");
+background-repeat: no-repeat;
+background-position: right-top;
+background-attachment: fixed;
+}
+
 a, a:visited
 {
 	text-decoration: none;
@@ -5,12 +14,15 @@ a, a:visited
 
 section
 {
+	color: white;
+	text-shadow: 1px 1px 0.5px black;
 	padding-top: 80px;
 }
 /* HEADER */
 .mainHeader
 {
 	background-color: rgba(70, 70, 70, 0.3) ;
+	text-shadow: 1px 1px 0.5px black;
 
 	
 }
@@ -24,7 +36,7 @@ section
 
 .listeHeader
 {
-	margin: auto;
+	margin-left: auto;
 }
 
 .listeItem
@@ -43,9 +55,17 @@ section
 /* INDEX */
 .sampleNews
 {
+	margin: 5px !important;
 	text-align: center;
 	border: 1px solid black;
 	border-radius: 5px;
+	box-shadow: 2px 2px 5px gray;
+}
+
+.newsTiles
+{
+	margin-left: 15% !important;
+	margin-right: 10% !important;
 }
 
 /* TABS*/

@@ -1,6 +1,6 @@
 <?php
 require('config.php');
-require('header.php');
+
 
 if(isset($_SESSION['id']))
 {
@@ -30,11 +30,17 @@ if(isset($_POST['admLog']))
 
 		if(password_verify($_POST['passLog'], $rowAdm['password']))
 		{
+			
+			
 			$_SESSION['pseudo'] = $_POST['userLog'];
-			$_SESSION['id']= $rowAdm['id'];
+			$_SESSION['id'] = $rowAdm['id'];
 
 			header('Location: admin.php');
-			exit();
+			
+		}
+		else
+		{
+			$errorLog ='Wrong pseudo or password !';
 		}		
 	}
 	else
@@ -43,7 +49,7 @@ if(isset($_POST['admLog']))
 	}
 }
 
-
+require('header.php');
 ?>
 
 <section>

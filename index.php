@@ -4,10 +4,10 @@ require('header.php');
 ?>
 
 		<section>
-			<div class="titreHeader">
+			<div class="titreHeader jumbotron jumbotron-fluid">
 				<h1>Un billet simple pour l'Alaska</h1>
 			</div>
-			<div class="row">
+			<div class="row newsTiles">
 			<?php
 
 			try
@@ -38,4 +38,5 @@ require('header.php');
 		</section>
 <?php
 require('footer.php');
+
 ?>		

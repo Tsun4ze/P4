@@ -3,12 +3,13 @@
 require('config.php');
 require('header.php');
 
-if(!isset($_SESSION['id']))
+
+/*if(!isset($_SESSION['id']))
 {
 	header('Location : index.php');
 	exit();
 }
-
+*/
 ?>
 
 <section>

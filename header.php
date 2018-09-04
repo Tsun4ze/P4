@@ -29,7 +29,7 @@
 				</div>
 
 				<div class="listeHeader">
-					<ul class="navbar-nav listeItem">
+					<ul class="nav listeItem">
 						<li class="nav-item">
 							<h3><a href="#" class="nav-link">Auteur</a></h3>
 						</li>
