@@ -2,7 +2,7 @@
 require('config.php');
 require('header.php');
 
-$viewDataB = $db->prepare('SELECT id, titre, contenu, DATE_FORMAT(dateAjout, \'%d%m%Y à %hH%imin%ss\') AS dateAjoutR FROM news WHERE id = :id');
+$viewDataB = $db->prepare('SELECT id, titre, contenu, DATE_FORMAT(dateAjout, \'%d/%m/%Y à %hH%i\') AS dateAjoutR FROM news WHERE id = :id');
 		$viewDataB->execute(array(':id' => $_GET['chapter']));
 		$rowVS = $viewDataB->fetch();
 
@@ -14,7 +14,7 @@ if(!isset($rowVS['id']))
 
 ?>
 
-	<section style="text-align: center;">
+	<section class="singlePost" style="text-align: center;">
 	<?php
 	echo'
 		<div>
