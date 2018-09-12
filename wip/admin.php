@@ -3,13 +3,14 @@
 require('config.php');
 require('header.php');
 
+var_dump($_SESSION['id']);
 
-/*if(!isset($_SESSION['id']))
+if(!isset($_SESSION['id']))
 {
 	header('Location : index.php');
 	exit();
 }
-*/
+
 ?>
 
 <section style="height: 896px; margin: auto;">

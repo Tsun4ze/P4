@@ -1,4 +1,10 @@
 <?php
+
+require('Database.php');
+require('Manager.php');
+require('News.php');
+require('NewsManager.php');
+
 require('config.php');
 require('header.php');
 
@@ -8,10 +14,10 @@ if(!isset($_SESSION['id']))
 	exit();
 }
 
-		$req = $db->prepare('SELECT id, titre, contenu, DATE_FORMAT(dateAjout, \'%d%m%Y à %hH%imin%ss\') AS dateAjoutR FROM news WHERE id = :id');
+		/*$req = $db->prepare('SELECT id, titre, contenu, DATE_FORMAT(dateAjout, \'%d%m%Y à %hH%imin%ss\') AS dateAjoutR FROM news WHERE id = :id');
 		$req->execute(array(':id' => $_GET['chapter']));
 		$row = $req->fetch();
-		$req->closeCursor();
+		$req->closeCursor();*/
 
 
 //Modfication
@@ -21,18 +27,16 @@ if(isset($_POST['addNews']))
 
 		if(!empty($_POST['contentNews']))
 		{
-			$req = $db->prepare('UPDATE news SET titre = :titre, contenu = :contenu, dateModif = NOW() WHERE id = :id');
-			$req->execute(array(
+			$newsManager = new NewsManager();
+			$news = new news(array(
 				
 				'titre' => $_POST['title'],
 				'contenu' => $_POST['contentNews'],
 				'id' => $_POST['idNewsUp']
 
 			));
+			$newsManager->update($news);
 
-
-			header('Location: index.php');
-			exit();
 		}
 		$errorAddNews = 'L\'article est vide';
 

@@ -1,6 +1,16 @@
 <?php
-require('config.php');
+
+session_start();
+require('Database.php');
+require('Manager.php');
+require('News.php');
+require('NewsManager.php');
+
 require('header.php');
+
+
+
+
 
 if(!isset($_SESSION['id']))
 {
@@ -14,23 +24,27 @@ if(isset($_POST['addNews']))
 
 		if(!empty($_POST['contentNews']))
 		{
-			$req = $db->prepare('INSERT INTO news (auteur, titre, contenu, dateAjout, dateModif) VALUES(:auteur, :titre, :contenu, NOW(), NOW())');
-			$req->execute(array(
+			
+			$newsManager = new NewsManager();
+			$news = new News(array(
 				'auteur' => $_SESSION['pseudo'],
 				'titre' => $_POST['title'],
 				'contenu' => $_POST['contentNews']
-
 			));
+			$newsManager->add($news);
 
-
-			header('Location: index.php');
-			exit();
+			/*header('Location: index.php');
+			exit();*/
+		}else{
+			$errorAddNews = 'L\'article est vide';
 		}
-		$errorAddNews = 'L\'article est vide';
+		
 
+	}else{
+		$errorAddNews = 'Le titre est manquant';
 	}
 
-	$errorAddNews = 'Le titre est manquant';
+	
 }
 
 ?>
