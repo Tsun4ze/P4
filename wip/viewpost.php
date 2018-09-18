@@ -1,35 +1,43 @@
 <?php
-require('config.php');
-require('header.php');
+require 'lib/autoload.php';
 
-$viewDataB = $db->prepare('SELECT id, titre, contenu, DATE_FORMAT(dateAjout, \'%d/%m/%Y à %hH%i\') AS dateAjoutR FROM news WHERE id = :id');
-		$viewDataB->execute(array(':id' => $_GET['chapter']));
-		$rowVS = $viewDataB->fetch();
+$db = Database::dbconnect();
+$manager = new NewsManager($db);
 
-if(!isset($rowVS['id']))
-{
-	header('Location: ./404.php');
-	exit;
-}
 
-?>
 
-	<section class="singlePost" style="text-align: center;">
-	<?php
-	echo'
-		<div>
-			<h1>'.$rowVS['titre'].'</h1>
-			<p>Posted on '.$rowVS['dateAjoutR'].'</p>
-			<br />
-			<p>'.$rowVS['contenu'].'</p>
-		</div>';
 
-	$viewDataB->closeCursor();
-	?>
 
-	</section>
-	
-<?php
+	if(isset($_GET['chapter']))
+	{
+		
+
+		foreach($manager->getUnique((int) $_GET['chapter']) as $chapter)
+		{
+
+		?>
+			<?= require('header.php'); ?>
+			<section class="singlePost" style="text-align: center;">
+			
+			
+				<div>
+					<h2><?= $chapter->titre() ?></h2>
+					<p>Posted on <?= $chapter->dateAjout(); ?></p>
+					<br />
+					<p><?= nl2br($chapter->contenu()); ?></p>
+				</div>
+		
+
+			</section>
+		<?php
+		}
+	}
+	else
+	{
+
+		header('Location: ./404.php');
+		exit;
+	}
 
 include('viewcomment.php');
 include('insertcomment.php');

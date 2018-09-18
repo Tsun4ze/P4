@@ -1,5 +1,9 @@
 <?php
-require('config.php');
+require 'lib/autoload.php';
+
+
+$db = Database::dbconnect();
+$manager = new NewsManager($db);
 require('header.php');
 ?>
 
@@ -10,30 +14,35 @@ require('header.php');
 			<div class="row newsTiles">
 			<?php
 
-			try
+			foreach ($manager->getList(0, 6) as $news)
 			{
-				$listeDataB = $db->query('SELECT id, auteur, titre, contenu, DATE_FORMAT(dateAjout, \'%d/%m/%Y à %hH%imin%ss\') AS dateAjoutR FROM news ORDER BY id DESC LIMIT 0, 6');
-				while($rowLDB = $listeDataB->fetch())
+				if (strlen($news->contenu()) <= 150)
 				{
-					?>
-					
-					<div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 sampleNews" style="max-width:30%;">
-						<h1><a href="viewpost.php?chapter=<?= $rowLDB['id']; ?>"><?= $rowLDB['titre']; ?></a></h1>
-
-						<p>Posted on <?=$rowLDB['dateAjoutR']; ?></p>
-						<br />
-						<p><?= substr($rowLDB['contenu'], 0, 150); ?> ...</p>
-						<p><a href="viewpost.php?chapter=<?=$rowLDB['id']; ?>">Lire plus</a></p>
-					</div>
-
-					<?php
+					$content = $news->contenu();
 				}
+				else
+				{
+					$start = substr($news->contenu(), 0, 150);
+					$start = substr($start, 0, strrpos($start, ' ')) . ' ...';
+
+					$content = $start;
+				}
+
+				
+				
+			?>
+				
+				<div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 sampleNews" style="max-width:30%;">
+					<h1><a href="viewpost.php?chapter=<?= $news->id() ?>"><?= $news->titre() ?></a></h1>
+
+					<p>Posted on <?= $news->dateAjout() ?></p>
+					<br />
+					<p><?= nl2br($content) ?></p>
+					<p><a href="viewpost.php?chapter=<?= $news->id() ?>">Lire plus</a></p>
+				</div>
+
+			<?php
 			}
-			catch(PDOException $e)
-			{
-				echo $e->getMessage();
-			}
-			$listeDataB->closeCursor();
 			?>
 			</div>
 		</section>

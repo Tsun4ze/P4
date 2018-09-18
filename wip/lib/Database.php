@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Database{
   private static $dbHost = "localhost";
   private static $dbName = "test";
@@ -11,7 +13,10 @@ class Database{
   public static function dbconnect(){
     try {
       self::$connection = new PDO("mysql:host=". self::$dbHost .";dbname=". self::$dbName .";charset=utf8", self::$dbUser , self::$dbUserPassword);
-    } catch (Exception $e) {
+      self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } 
+    catch (Exception $e) 
+    {
       die($e->getMessage());
     }
     return self::$connection;

@@ -1,20 +1,24 @@
 <?php
 
+
 class News
 {
-	private $_id;
-	private $_auteur;
-	private $_titre;
-	private $_contenu;
-	private $_dateAjout;
+	protected $_id;
+	protected $_auteur;
+	protected $_titre;
+	protected $_contenu;
+	protected $_dateAjout;
 
-	public function __construct(Array $data)
+	public function __construct($data = [])
 	{
+		if(!empty($data))
+		{
+			$this->hydrate($data);
+		}
 		
-		$this->hydrate($data);
 	}
 
-	public function hydrate(Array $data)
+	public function hydrate($data = [])
 	{
 		if(isset($data['id']))
 		{

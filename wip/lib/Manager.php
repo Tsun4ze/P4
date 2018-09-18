@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Manager 
 {
 	public $_db;
