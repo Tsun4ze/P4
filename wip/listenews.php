@@ -1,19 +1,25 @@
 <?php 
 
-require('config.php');
+require 'lib/autoload.php';
 require('header.php');
 
 
-if(!isset($_SESSION['id']))
+/* if(!isset($_SESSION['id']))
 {
 	header('Location: index.php');
 	exit();
 }
+ */
+
+$db = Database::dbconnect();
+$manager = new NewsManager($db);
+
+if(isset($_POST['supprNews']))
+{
+	$manager->delete((int) $_POST['idNews2']);
+}
 
 
-
-$dataCom = $db->prepare('SELECT id, auteur, titre, contenu, DATE_FORMAT(dateAjout, \'%d/%m/%Y à %hH%imin%ss\') AS dateAjoutR FROM news ORDER BY id DESC');
-$dataCom->execute();
 
 
 ?>
@@ -43,24 +49,24 @@ $dataCom->execute();
 		</thead>
 		<tbody class="tabBod">
 			<?php
-				while($rowCom = $dataCom->fetch())
+				foreach($manager->getList() as $news)
 				{
 					?>
 			<tr style="text-align: center;">
-				<td style="text-decoration: underline; width: 20%;"><?= $rowCom['titre']?></td>
-				<td style="width: 65%;"><?= $rowCom['contenu'] ?></td>
-				<td><?= nl2br(htmlspecialchars($rowCom['dateAjoutR'])) ?></td>
+				<td style="text-decoration: underline; width: 20%;"><?= $news->titre()?></td>
+				<td style="width: 65%;"><?=$news->contenu() ?></td>
+				<td><?= $news->dateAjout() ?></td>
 				
 				<td>
-					<form method="post" action="updatenews.php?chapter=<?= $rowCom['id'] ?>">
-						<input type="hidden" name="idNews1" value="<?= $rowCom['id'] ?>" />
+					<form method="post" action="updatenews.php?chapter=<?= $news->id() ?>">
+						<input type="hidden" name="idNews1" value="<?= $news->id() ?>" />
 						
 						<input type="submit" name="udptNews" value="Modifier" />
 					</form>
 				</td>
 				<td>
-					<form method="post" action="newsaction.php">
-						<input type="hidden" name="idNews2" value="<?= $rowCom['id'] ?>" />
+					<form method="post" action="listenews.php">
+						<input type="hidden" name="idNews2" value="<?= $news->id() ?>" />
 						<input type="submit" name="supprNews" value="Supprimer" />
 					
 					</form>
@@ -70,7 +76,7 @@ $dataCom->execute();
 
 				<?php
 				}
-				$dataCom->closeCursor();
+				
 				?>
 		</tbody>
 	</table>

@@ -14,11 +14,6 @@ require('header.php');
 	exit();
 } */
 
-		/*$req = $db->prepare('SELECT id, titre, contenu, DATE_FORMAT(dateAjout, \'%d%m%Y à %hH%imin%ss\') AS dateAjoutR FROM news WHERE id = :id');
-		$req->execute(array(':id' => $_GET['chapter']));
-		$row = $req->fetch();
-		$req->closeCursor();*/
-
 
 //Modfication
 if(isset($_POST['addNews']))

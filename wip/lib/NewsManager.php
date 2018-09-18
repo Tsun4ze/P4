@@ -38,7 +38,7 @@ class NewsManager extends Manager
 	{
 		$req = $this->_db->prepare('DELETE FROM news WHERE id = :id');
 		$req->execute(array(
-			'id' => $news->id()
+			'id' => $id
 		));
 	}
 

@@ -1,22 +1,21 @@
 <?php
 
 session_start();
-require('Database.php');
-require('Manager.php');
-require('News.php');
-require('NewsManager.php');
+require 'lib/autoload.php';
+
+$db = Database::dbconnect();
 
 require('header.php');
 
 
 
 
-
+/* 
 if(!isset($_SESSION['id']))
 {
 	header('Location: index.php');
 	exit();
-}
+} */
 
 if(isset($_POST['addNews']))
 {
@@ -25,7 +24,7 @@ if(isset($_POST['addNews']))
 		if(!empty($_POST['contentNews']))
 		{
 			
-			$newsManager = new NewsManager();
+			$newsManager = new NewsManager($db);
 			$news = new News(array(
 				'auteur' => $_SESSION['pseudo'],
 				'titre' => $_POST['title'],
@@ -33,8 +32,8 @@ if(isset($_POST['addNews']))
 			));
 			$newsManager->add($news);
 
-			/*header('Location: index.php');
-			exit();*/
+			header('Location: listenews.php');
+			exit();
 		}else{
 			$errorAddNews = 'L\'article est vide';
 		}
