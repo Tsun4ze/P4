@@ -14,16 +14,15 @@ require('header.php');
 $db = Database::dbconnect();
 $manager = new NewsManager($db);
 
+/*  */
+/* Delete selected News/Chapter */
+/*  */
 if(isset($_POST['supprNews']))
 {
 	$manager->delete((int) $_POST['idNews2']);
 }
 
-
-
-
 ?>
-
 
 <section>
 	<?php

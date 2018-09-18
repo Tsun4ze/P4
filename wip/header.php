@@ -26,7 +26,7 @@ session_start();
 
 		<header>
 
-			<nav class="navbar navbar-expand-sm fixed-top mainHeader" style="visibility: hidden;">
+			<nav class="navbar navbar-expand-sm fixed-top mainHeader">
 				<div class="nameHeader">
 					<h2><a href="index.php">Jean Forteroche</a></h2>
 				</div>

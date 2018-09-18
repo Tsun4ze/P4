@@ -43,6 +43,20 @@ class CommentManager extends Manager
         return $listeComm;
     }
 
+    public function getListReport()
+    {
+        $sql = 'SELECT id, auteur, contenu, report,date_comm FROM comments WHERE report > 0 ORDER BY id DESC';
+        $req = $this->_db->query($sql);
+
+        while($comment = $req->fetch())
+        {
+            $listeReport[] = new Comment($comment);
+        }
+
+        $req->closeCursor();
+        return $listeReport;
+    }
+
     public function getComments($newsId)
     {
         $sql = 'SELECT id, news, auteur, contenu, date_comm FROM comments WHERE news = :news ORDER BY date_comm ASC';
@@ -62,5 +76,12 @@ class CommentManager extends Manager
             return $commentar;
         }
        
+    }
+
+    public function report($id)
+    {
+        $req = $this->_db->prepare('UPDATE comments SET report = report + 1 WHERE id = :id');
+        $req->bindValue(':id', (int) $id, PDO::PARAM_INT);
+        $req->execute();
     }
 }

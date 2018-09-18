@@ -11,7 +11,9 @@ if(!isset($_SESSION['id']))
 	header('Location: index.php');
 	exit();
 }
-
+/*  */
+/* Delete comment */
+/*  */
 if(isset($_POST['supprCom']))
 {
 	$manager->delete((int) $_POST['idCom']);

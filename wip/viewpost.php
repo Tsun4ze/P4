@@ -41,6 +41,10 @@ require('header.php');
 /*  */
 			if($managerComm->getComments((int) $_GET['chapter']) != null)
 			{
+				if(isset($_POST['report']))
+				{
+					$managerComm->report($_POST['idComment']);
+				}
 				foreach($managerComm->getComments((int) $_GET['chapter']) as $comment)
 				{
 					
