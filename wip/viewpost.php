@@ -3,7 +3,7 @@ require 'lib/autoload.php';
 
 $db = Database::dbconnect();
 $manager = new NewsManager($db);
-
+$managerComm = new CommentManager($db);
 
 require('header.php');
 
@@ -30,6 +30,35 @@ require('header.php');
 			</section>
 		<?php
 		}
+		?>
+		
+		<?php
+			if($managerComm->getComments((int) $_GET['chapter']) != null)
+			{
+				foreach($managerComm->getComments((int) $_GET['chapter']) as $comment)
+				{
+					
+					
+						?>
+						<section class="commentary">
+							<div>
+								<h3><?= $comment->auteur() ?></h3>
+								<p>Posted on <?= $comment->date_comm() ?></p>
+								<br />
+								<p><?=  $comment->contenu() ?></p>
+							</div>
+
+							<div>
+								<form action="signalement.php" method="post">
+									<input type="hidden" name="idComment" value="<?=  $comment->id() ?>" />
+									<input type="submit" name="report" value="Signaler" />
+								</form>
+							</div>
+						</section>
+						<?php
+					
+				}
+			}
 	}
 	else
 	{
@@ -37,7 +66,7 @@ require('header.php');
 		exit();
 	}
 
-include('viewcomment.php');
+
 include('insertcomment.php');
 require('footer.php');
 ?>
