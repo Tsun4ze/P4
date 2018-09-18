@@ -5,18 +5,17 @@ $db = Database::dbconnect();
 $manager = new NewsManager($db);
 
 
-
+require('header.php');
 
 
 	if(isset($_GET['chapter']))
 	{
 		
-
 		foreach($manager->getUnique((int) $_GET['chapter']) as $chapter)
 		{
 
 		?>
-			<?= require('header.php'); ?>
+			
 			<section class="singlePost" style="text-align: center;">
 			
 			
@@ -34,9 +33,8 @@ $manager = new NewsManager($db);
 	}
 	else
 	{
-
 		header('Location: ./404.php');
-		exit;
+		exit();
 	}
 
 include('viewcomment.php');
