@@ -1,6 +1,6 @@
 <?php 
 
-session_start();
+
 ob_start(); //Mise en mémoire tempon
 
 define('DBHOST', 'localhost');

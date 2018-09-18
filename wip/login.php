@@ -11,8 +11,7 @@ if(isset($_SESSION['id']))
 if(isset($_POST['admLog']))
 {
 	
-	/*var_dump($hashed_pass);
-	var_dump($rowAdm['password']);*/
+	
 	
 	if((isset($_POST['userLog'])) && (isset($_POST['passLog'])) && (!empty($_POST['userLog'])) && (!empty($_POST['passLog'])))
 	{

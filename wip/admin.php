@@ -3,7 +3,7 @@
 require('config.php');
 require('header.php');
 
-var_dump($_SESSION['id']);
+
 
 if(!isset($_SESSION['id']))
 {

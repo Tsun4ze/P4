@@ -10,7 +10,10 @@ require('header.php');
 
 	if(isset($_GET['chapter']))
 	{
-		
+
+/*  */		
+/* Retrieve chapter */
+/*  */
 		foreach($manager->getUnique((int) $_GET['chapter']) as $chapter)
 		{
 
@@ -33,6 +36,9 @@ require('header.php');
 		?>
 		
 		<?php
+/*  */
+/* Retrieve comment linked to chapter if exist */
+/*  */
 			if($managerComm->getComments((int) $_GET['chapter']) != null)
 			{
 				foreach($managerComm->getComments((int) $_GET['chapter']) as $comment)
@@ -59,14 +65,62 @@ require('header.php');
 					
 				}
 			}
+/*  */
+/* Add comment linked to chapter */
+/*  */
+			if(isset($_POST['sendCom']))
+			{
+				if(!empty($_POST['auteur']) && !empty($_POST['contenu']))
+				{
+					$addcomment = new Comment(array(
+						'news' => $_GET['chapter'],
+						'auteur' => $_POST['auteur'],
+						'contenu' => $_POST['contenu']
+
+					));
+					$managerComm->add($addcomment);
+
+					header('Location: '.$_SERVER['HTTP_REFERER']);
+					exit();
+				}
+				else
+				{
+					$error = 'Un ou plusieurs champs sont vides !';
+				}
+			}
+			?>
+			<section style="text-align: center;">
+				<div>
+					<h3>Add a comment:</h3>
+
+					<form method="post" action="viewpost.php?chapter=<?php echo $_GET['chapter']; ?>">
+						<p>
+							<input type="hidden" name="news" value="<?php echo $_GET['chapter'] ?>" />
+							<label for="auteur">Pseudo : </label><br /><input type="text" name="auteur" id="auteur" /><br />
+							<label for="contenu">Message : </label><br /><textarea name="contenu" id="contenu" rows="10" cols="40"/></textarea><br/><br />
+							<input type="submit" name="sendCom" value="Send" />
+						</p>
+						
+					</form>
+					<?php
+					if(isset($error))
+					{
+						echo '<p style="color: red;">'.$error.'</p>';
+					} 
+					
+					?>
+				</div>
+			</section>
+
+			<?php
 	}
 	else
 	{
-		header('Location: ./404.php');
+		header('Location: 404.php');
 		exit();
 	}
 
 
-include('insertcomment.php');
+
 require('footer.php');
 ?>
