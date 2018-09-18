@@ -1,5 +1,9 @@
 <?php
-require ('config.php');
+require 'lib/autoload.php';
+
+$db = Database::dbconnect();
+$manager = new CommentManager($db);
+
 require ('header.php');
 
 if(!isset($_SESSION['id']))
@@ -8,11 +12,10 @@ if(!isset($_SESSION['id']))
 	exit();
 }
 
-
-
-$dataCom = $db->prepare('SELECT id, auteur, contenu, DATE_FORMAT(date_comm, \'%d/%m/%Y à %hH%imin%ss\') AS date_comR FROM comments ORDER BY id DESC');
-$dataCom->execute();
-
+if(isset($_POST['supprCom']))
+{
+	$manager->delete((int) $_POST['idCom']);
+}
 
 ?>
 
@@ -39,26 +42,26 @@ $dataCom->execute();
 		</thead>
 		<tbody class="tabBod">
 			<?php
-				while($rowCom = $dataCom->fetch())
+				foreach($manager->getList() as $comment)
 				{
-					?>
-			<tr>
-				<td><?= $rowCom['auteur']?></td>
-				<td style=""><?= $rowCom['contenu'] ?></td>
-				<td><?= nl2br(htmlspecialchars($rowCom['date_comR'])) ?></td>
-				
-				<td>
-					<form method="post" action="panelcommentaires_delete.php">
-						<input type="hidden" name="idCom" value="<?= $rowCom['id'] ?>" />
-						<input type="submit" name="supprCom" value="Supprimer" />
-					</form>
-				</td>
-			</tr>
+				?>
+					<tr>
+						<td><?= $comment->auteur() ?></td>
+						<td style=""><?= $comment->contenu() ?></td>
+						<td><?= $comment->date_comm() ?></td>
+						
+						<td>
+							<form method="post" action="panelcommentaires.php">
+								<input type="hidden" name="idCom" value="<?= $comment->id() ?>" />
+								<input type="submit" name="supprCom" value="Supprimer" />
+							</form>
+						</td>
+					</tr>
 
 
 				<?php
 				}
-				$dataCom->closeCursor();
+				
 				?>
 		</tbody>
 	</table>

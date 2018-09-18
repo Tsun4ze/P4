@@ -35,7 +35,7 @@ class CommentManager extends Manager
 
         while($comment = $request->fetch())
         {
-            $listeComm = new Comment($comment);
+            $listeComm[] = new Comment($comment);
         }
 
         $request->closeCursor();
