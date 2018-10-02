@@ -8,7 +8,7 @@ $manager = new NewsManager($db);
 
 ?>
 
-	<section>
+	<section class="simpleSection">
 
 		<?php
 			

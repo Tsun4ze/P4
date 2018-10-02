@@ -31,3 +31,7 @@ function getUpdate()
     require 'pages/Templates/admin/updatenews.php';
 }
 
+function getComSignal()
+{
+    require 'pages/Templates/admin/report.php';
+}

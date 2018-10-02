@@ -16,7 +16,7 @@ if(isset($_POST['supprCom']))
 
 ?>
 
-<section style="text-align:center;">
+<section style="text-align:center;" class="simpleSection">
 	<?php
 	if(isset($confirmMsg))
 	{

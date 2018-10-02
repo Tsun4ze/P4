@@ -8,7 +8,7 @@ $manager = new NewsManager($db);
 
 ?>
 
-		<section>
+		<section class="simpleSection">
 			<div class="titreHeader jumbotron jumbotron-fluid">
 				<h1>Un billet simple pour l'Alaska</h1>
 			</div>

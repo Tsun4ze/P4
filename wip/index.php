@@ -54,6 +54,10 @@ try
 		{
 			getUpdate();
 		}
+		elseif($_GET['action'] === 'comSignal')
+		{
+			getComSignal();
+		}
 		elseif($_GET['action'] === 'dc')
 		{
 			session_destroy();

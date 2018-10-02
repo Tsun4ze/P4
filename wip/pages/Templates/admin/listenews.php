@@ -17,7 +17,7 @@ if(isset($_POST['supprNews']))
 
 ?>
 
-<section>
+<section class="simpleSection">
 	<?php
 	if(isset($confirmMsg))
 	{

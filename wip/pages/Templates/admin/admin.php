@@ -7,7 +7,7 @@ require 'lib/autoload.php';
 
 ?>
 
-<section style="height: 896px; margin: auto;">
+<section style="margin: auto;" class="simpleSection">
 	<h3>Panel d'administration :</h3>
 	<br />
 

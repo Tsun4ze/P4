@@ -26,7 +26,7 @@ if(isset($_POST['admLog']))
 
 ?>
 
-<section>
+<section class="simpleSection">
 	<div style="text-align:center;">
 		<h2>Login :</h2>
 		<form method="post" action="index.php?action=signup" style="text-align:left; margin-left: 45%;">

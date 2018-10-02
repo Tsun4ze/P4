@@ -43,13 +43,13 @@ if(isset($_POST['addNews']))
 
 ?>
 
-<section>
+<section class="addnews simpleSection">
 	<?php if(isset($errorAddNews)){ echo '<h2>'.$errorAddNews.'</h2>';} ?>
 	<h3>Ajouter une nouvelle :</h3>
 	<form method="post" action="addnews.php">
-		<label for="title">Titre : </label><input type="text" name="title" id="title" /><br /><br />
+		<label for="title" class="addTitle">Titre : </label><input type="text" name="title" id="title" class="addTitle" /><br /><br />
 		<textarea name="contentNews" id="contentNews"></textarea><br /><br />
-		<input type="submit" name="addNews" value="Poster" />
+		<input type="submit" name="addNews" value="Poster" class="btnAdd"/>
 	</form>
 </section>
 
