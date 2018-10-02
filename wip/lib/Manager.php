@@ -10,4 +10,10 @@ class Manager
 	{
 		$this->_db = Database::dbconnect();
 	}
+
+	public function redirect($uri = '/')
+	{
+		header("Location: $uri");
+		exit();
+	}
 }

@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Database{
   private static $dbHost = "localhost";
   private static $dbName = "test";

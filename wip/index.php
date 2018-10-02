@@ -1,52 +1,77 @@
 <?php
-require 'lib/autoload.php';
 
+require 'controller/frontend.php';
+require 'controller/backend.php';
 
-$db = Database::dbconnect();
-$manager = new NewsManager($db);
-require('header.php');
-?>
+if(session_status() == PHP_SESSION_NONE) :
+	session_start();
+endif; 
 
-		<section>
-			<div class="titreHeader jumbotron jumbotron-fluid">
-				<h1>Un billet simple pour l'Alaska</h1>
-			</div>
-			<div class="row newsTiles">
-			<?php
-
-			foreach ($manager->getList(0, 6) as $news)
+try
+{
+	/*  */
+	/* All users, news seletions */
+	/*  */
+	if(isset($_GET['action']) && !empty($_GET['action']))
+	{
+		if($_GET['action'] === 'news' && ((int) $_GET['chapter']) > 0)
+		{
+			getChapter();
+		}
+		elseif($_GET['action'] === 'allnews')
+		{
+			getAllChapter();
+		
+		}
+		/*  */
+		/* Admin part */
+		/*  */
+		elseif($_GET['action'] === 'signup')
+		{
+			if(isset($_SESSION['Adm']) && $_SESSION['Adm'] === 'admin')
 			{
-				if (strlen($news->contenu()) <= 150)
-				{
-					$content = $news->contenu();
-				}
-				else
-				{
-					$start = substr($news->contenu(), 0, 150);
-					$start = substr($start, 0, strrpos($start, ' ')) . ' ...';
-
-					$content = $start;
-				}
-
-				
-				
-			?>
-				
-				<div class="col-xl-6 col-lg-6 col-md-2 col-sm-2 sampleNews" style="max-width:30%;">
-					<h1><a href="viewpost.php?chapter=<?= $news->id() ?>"><?= $news->titre() ?></a></h1>
-
-					<p>Posted on <?= $news->dateAjout() ?></p>
-					<br />
-					<p><?= nl2br($content) ?></p>
-					<p><a href="viewpost.php?chapter=<?= $news->id() ?>">Lire plus</a></p>
-				</div>
-
-			<?php
+				getAdminHome();
 			}
-			?>
-			</div>
-		</section>
-<?php
-require('footer.php');
+			else
+			{
+				getLogin();
+			}
 
-?>		
+		}
+		elseif($_GET['action'] === 'gestComs')
+		{
+			getGestComs();
+		}
+		elseif($_GET['action'] === 'addNews')
+		{
+			getAddNews();
+		}
+		elseif($_GET['action'] === 'listNews')
+		{
+			getAdmList();
+		}
+		elseif($_GET['action'] === 'update' && ((int) $_GET['chapter'] > 0))
+		{
+			getUpdate();
+		}
+		elseif($_GET['action'] === 'dc')
+		{
+			session_destroy();
+
+			header('Location: ./');
+			exit();
+		}
+		
+	}
+	
+	else
+	{
+		listIndex();
+	}
+}
+catch(Exception $e) 
+{
+    echo 'Erreur : ' . $e->getMessage();
+}
+	
+	

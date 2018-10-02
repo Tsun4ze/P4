@@ -1,6 +1,5 @@
 <?php
 
-
 class News
 {
 	protected $_id;
