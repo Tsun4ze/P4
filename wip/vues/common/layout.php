@@ -1,3 +1,7 @@
+<?php
+$session = new Session();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,11 +12,17 @@
 
 		<link rel="stylesheet" type="text/css" href="Public/css/main.css">
 		<link rel="stylesheet" type="text/css" href="Public/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 		<script type="text/javascript" src="Public/tinymce/tinymce.min.js"></script>
 		<script>
 			tinymce.init({
 				selector : 'textarea#contentNews',
-				language : 'fr_FR'
+				language : 'fr_FR',
+				height: 450,
+				width: 1200,
+				
+				resize: 'both',
+				plugins: 'advlist autolink textcolor colorpicker emoticons table',
 				
 			});
 		</script>
@@ -22,7 +32,7 @@
 	<body>
 
 		<header>
-
+		<?= $session->flash(); ?>
 			<nav class="navbar navbar-expand-sm fixed-top mainHeader">
 				<div class="nameHeader">
 					<h2><a href="./">Jean Forteroche</a></h2>
@@ -45,6 +55,7 @@
 
 		</header>
 
+		
 		<?= $contentView ?>
 
 		<footer class="footer">
@@ -59,6 +70,8 @@
 			</div>
 			
 		</footer>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="./public/js/main.js"></script>
 	</body>
 
 </html>

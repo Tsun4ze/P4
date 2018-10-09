@@ -1,0 +1,24 @@
+-> lib changer to modele
+
+
+if($_GET['action'] === 'news' && ((int) $_GET['chapter']) > 0)
+{
+    $db = Database::dbconnect();
+    $idChapter = $_GET['chapter'];
+    $req = $db->query("SELECT id FROM news");
+    
+
+    while($row = $req->fetch())
+    {
+        if($row['id'] = $idChapter)
+        {
+            $frontend->chapter();
+        }
+        else
+        {
+            $frontend->error();
+        }
+    }
+    $req->closeCursor();
+    
+}

@@ -1,30 +1,10 @@
 <?php 
 ob_start();
 
-require 'lib/autoload.php';
-
-$db = Database::dbconnect();
-$manager = new NewsManager($db);
-
-
-/*  */
-/* Delete selected News/Chapter */
-/*  */
-if(isset($_POST['supprNews']))
-{
-	$manager->delete((int) $_POST['idNews2']);
-}
-
 ?>
 
 <section class="simpleSection">
-	<?php
-	if(isset($confirmMsg))
-	{
-		echo '<p style="color: green;">'.$confirmMsg.'</p>';
-	}
-	?>
-	<h2>Liste de total des news :</h2>
+	<h2 class="admTitle">Liste de total des news :</h2>
 
 	<table style="width:100%;" class="table-bordered table-striped">
 
@@ -52,14 +32,15 @@ if(isset($_POST['supprNews']))
 				<td>
 					<form method="post" action="index.php?action=update&chapter=<?= $news->id() ?>">
 						<input type="hidden" name="idNews1" value="<?= $news->id() ?>" />
-						
-						<input type="submit" name="udptNews" value="Modifier" />
+						<i class="fas fa-edit"></i>
+						<input type="submit" name="udptNews" value="Modifier" class="btnAdd"/>
 					</form>
 				</td>
 				<td>
 					<form method="post" action="index.php?action=listNews">
 						<input type="hidden" name="idNews2" value="<?= $news->id() ?>" />
-						<input type="submit" name="supprNews" value="Supprimer" />
+						<i class="fas fa-eraser"></i>
+						<input type="submit" name="supprNews" value="Supprimer" class="btnSuppr" />
 					
 					</form>
 				</td>
@@ -76,5 +57,5 @@ if(isset($_POST['supprNews']))
 
 <?php
 $contentView = ob_get_clean();
-require 'pages/Templates/common/layout.php';
+require 'vues/common/layout.php';
 ?>

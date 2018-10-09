@@ -3,6 +3,8 @@
 class AdminManager extends Manager
 {
     public $_db;
+    
+    
 
 	public function __construct(PDO $db)
 	{
@@ -35,7 +37,10 @@ class AdminManager extends Manager
         }
         else
         {
-            throw new Exception('Indentifiants incorrects.');
+            $session = new Session();
+            $session->setFlash('Indentifiants incorrect', 'danger');
+
+            header('Location:'.$_SERVER['HTTP_REFERER']);
         }
     }
 

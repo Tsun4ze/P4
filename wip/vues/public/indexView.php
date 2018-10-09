@@ -1,11 +1,6 @@
 <?php
 ob_start();
 
-require 'lib/autoload.php';
-
-$db = Database::dbconnect();
-$manager = new NewsManager($db);
-
 ?>
 
 		<section class="simpleSection">
@@ -54,5 +49,5 @@ $manager = new NewsManager($db);
 <?php
 $contentView = ob_get_clean();
 
-require 'pages/Templates/common/layout.php';
+require 'vues/common/layout.php';
 ?>		

@@ -1,11 +1,6 @@
 <?php
 ob_start();
 
-require 'lib/autoload.php';
-
-$db = Database::dbconnect();
-$manager = new NewsManager($db);
-$managerComm = new CommentManager($db);
 
 	if(isset($_GET['chapter']))
 	{
@@ -68,29 +63,6 @@ $managerComm = new CommentManager($db);
 					
 				}
 			}
-/*  */
-/* Add comment linked to chapter */
-/*  */
-			if(isset($_POST['sendCom']))
-			{
-				if(!empty($_POST['auteur']) && !empty($_POST['contenu']))
-				{
-					$addcomment = new Comment(array(
-						'news' => $_GET['chapter'],
-						'auteur' => $_POST['auteur'],
-						'contenu' => $_POST['contenu']
-
-					));
-					$managerComm->add($addcomment);
-
-					header('Location: '.$_SERVER['HTTP_REFERER']);
-					exit();
-				}
-				else
-				{
-					$error = 'Un ou plusieurs champs sont vides !';
-				}
-			}
 			?>
 			<section style="text-align: center;">
 				<div>
@@ -105,13 +77,6 @@ $managerComm = new CommentManager($db);
 						</p>
 						
 					</form>
-					<?php
-					if(isset($error))
-					{
-						echo '<p style="color: red;">'.$error.'</p>';
-					} 
-					
-					?>
 				</div>
 			</section>
 
@@ -119,11 +84,11 @@ $managerComm = new CommentManager($db);
 	}
 	else
 	{
-		header('Location: 404.php');
+		header('Location:index.php?error');
 		exit();
 	}
 
 
 $contentView = ob_get_clean();
-require 'pages/Templates/common/layout.php';
+require 'vues/common/layout.php';
 ?>

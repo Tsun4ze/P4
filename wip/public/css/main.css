@@ -153,13 +153,60 @@ section
 	margin-left: 5%;
 }
 
+.admTitle
+{
+	text-decoration: underline;
+	text-align: center;
+}
+
+.addTitle
+{
+	font-size:30px;
+}
+
 .addnews
 {
 	margin: auto;
 	text-align: center;
+	align-items: center;
+	align-content: center;
+	align-self: center;
 	
 }
 
+.contentAdd
+{
+	margin: auto;
+	max-width: 1200px;
+}
+
+.btnAdd
+{
+	
+	text-shadow: 1px 1px 1px black;
+	background-color: rgb(49, 194, 49);
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	border-radius: 5px;
+	border-color: green;
+}
+
+.btnSuppr
+{
+	color: white;
+	text-shadow: 1px 1px 1px black;
+	background-color: rgb(175, 6, 6);
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	border-radius: 5px;
+	border-color:darkred;
+}
 
 /*=========================================================*/
 
@@ -183,6 +230,17 @@ th, td
 {
 
 	border: 1px solid black !important;
+	background-color: rgba(128, 128, 128, 0.5);
 }
 
+/*=========================================================*/
+
+/* FLASH MESSAGE*/
+/*=========================================================*/
+.alert
+{
+	z-index: 2064;
+	text-align: center;
+
+}
 /*=========================================================*/

@@ -8,3 +8,5 @@ function autoload($classname)
 }
 
 spl_autoload_register('autoload');
+
+/* move to index */

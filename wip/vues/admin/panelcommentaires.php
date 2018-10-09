@@ -1,20 +1,6 @@
 <?php
 ob_start();
 
-require 'lib/autoload.php';
-
-$db = Database::dbconnect();
-$manager = new CommentManager($db);
-
-
-/*  */
-/* Delete reported comment */
-/*  */
-if(isset($_POST['supprCom']))
-{
-	$manager->delete((int) $_POST['idCom']);
-}
-
 ?>
 
 <section style="text-align:center;" class="simpleSection">
@@ -24,7 +10,7 @@ if(isset($_POST['supprCom']))
 		echo '<p style="color: green;">'.$confirmMsg.'</p>';
 	}
 	?>
-	<h2>Liste des commentaires reportés :</h2>
+	<h2 class="admTitle">Liste de total des commentaires :</h2>
 
 	<table style="width:100%;" class="table-striped table-bordered table-hover">
 
@@ -34,25 +20,25 @@ if(isset($_POST['supprCom']))
 				<th>Auteur</th>
 				<th>Commentaire</th>
 				<th>Date d'ajout</th>
-				<th>Nombre de signalement</th>
 				<th colspan="2">Action</th>
 				
 			</tr>
 		</thead>
 		<tbody class="tabBod">
 			<?php
-				foreach($manager->getListReport() as $comment)
+				foreach($manager->getList() as $comment)
 				{
 				?>
 					<tr>
 						<td><?= $comment->auteur() ?></td>
 						<td style=""><?= $comment->contenu() ?></td>
 						<td><?= $comment->date_comm() ?></td>
-						<td><?= $comment->report() ?></td>
+						
 						<td>
-							<form method="post" action="report.php">
+							<form method="post" action="index.php?action=gestComs">
 								<input type="hidden" name="idCom" value="<?= $comment->id() ?>" />
-								<input type="submit" name="supprCom" value="Supprimer" />
+								<i class="fas fa-eraser"></i>
+								<input type="submit" name="supprCom" value="Supprimer" class="btnSuppr" />
 							</form>
 						</td>
 					</tr>
@@ -67,6 +53,7 @@ if(isset($_POST['supprCom']))
 </section>
 
 <?php
+
 $contentView = ob_get_clean();
-require 'pages/Templates/common/layout.php';
+require 'vues/common/layout.php';
 ?>

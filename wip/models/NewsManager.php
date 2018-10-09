@@ -82,4 +82,6 @@ class NewsManager extends Manager
 		return $chapter;
 		
 	}
+
+	
 }
