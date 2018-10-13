@@ -1,10 +1,7 @@
 
 body
 {
-background-image: url("Alaska.jpg");
-background-repeat: no-repeat;
-background-position: right-top;
-background-attachment: fixed;
+background-color: rgb(0, 0, 36) !important;
 }
 
 a, a:visited, a:hover
@@ -23,9 +20,27 @@ section
 
 .simpleSection
 {
-	min-height: 820px;
+	background-color: rgba(115, 115, 115, 0.5) !important;
+	max-width:45%;
+	
+	margin: 20px;
+	
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 2px 2px 5px black;
 }
 
+.listAll
+{
+	margin: 20px !important;
+	max-width:40%;
+}
+
+.newsAllTiles
+{
+	margin-left: 10% !important;
+	margin-right: 5% !important;
+}
 
 /* HEADER */
 /*=========================================================*/
@@ -77,9 +92,10 @@ section
 /*=========================================================*/
 .sampleNews
 {
-	background-color: rgba(115, 115, 115, 0.5);
-	margin: 5px !important;
-	text-align: center;
+	background-color: rgba(115, 115, 115, 0.5) !important;
+	max-width:40%;
+	
+	margin: 10px;
 	border: 1px solid black;
 	border-radius: 5px;
 	box-shadow: 2px 2px 5px black;
@@ -140,12 +156,38 @@ section
 
 /* ADMIN*/
 /*=========================================================*/
+
+.login
+{
+	background-color: rgba(115, 115, 115, 0.5) !important;
+	max-width:45%;
+	
+	margin: auto;
+	
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 2px 2px 5px black;
+}
+
+.panelAdm
+{
+	background-color: rgba(115, 115, 115, 0.5) !important;
+	max-width:50%;
+	
+	margin: 20px;
+	
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 2px 2px 5px black;
+}
+
 .panelRedir
 {
 	color: white;
 	margin: auto;
 	background-color: rgba(77, 77, 77, 0.5);
-	padding: 5px;
+	margin-top: 20px !important;
+	padding: 10px;
 	border: 0.5px solid black;
 	border-radius: 5px;
 	font-size: 2rem;

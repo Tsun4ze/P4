@@ -64,7 +64,7 @@ $session = new Session();
 				<?php
 					if(isset($_SESSION['Adm']))
 					{
-						echo '<h4 style="margin-left:auto; margin-right:5px;"><a href="index.php?action=dc">Logout</a></h4>';
+						echo '<h4 style="margin-left:auto; margin-right:5px;"><a href="index.php?action=dc">Déconnexion</a></h4>';
 					}
 				?>
 			</div>

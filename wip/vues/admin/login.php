@@ -3,7 +3,7 @@ ob_start();
 
 ?>
 
-<section class="simpleSection">
+<section class="login">
 	<div style="text-align:center;">
 	
 		<h2 class="admTitle">Login :</h2>

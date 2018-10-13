@@ -3,37 +3,38 @@ ob_start();
 
 ?>
 
-	<section class="simpleSection">
+	<section class="row newsAllTiles">
 
-		<?php
-			
-			
+<?php
+	foreach($manager->getList() as $news)
+	{
+		/*  */
+		/* Manage content */
+		/* Text length */
+		/*  */
+		if (strlen($news->contenu()) <= 100)
+		{
+			$content = $news->contenu();
+		}
+		else
+		{
+			$start = substr($news->contenu(), 0, 100);
+			$start = substr($start, 0, strrpos($start, ' ')) . ' ...';
 
-			foreach($manager->getList() as $news)
-			{
-				/*  */
-				/* Manage content */
-				/*  */
-				if (strlen($news->contenu()) <= 100)
-				{
-					$content = $news->contenu();
-				}
-				else
-				{
-					$start = substr($news->contenu(), 0, 100);
-					$start = substr($start, 0, strrpos($start, ' ')) . ' ...';
+			$content = $start;
+		}
+?>
 
-					$content = $start;
-				}
-				?>
-						<div style="text-align: center;width: 70%; margin: auto;" class="listNews">
-							<h1><a href="viewpost.php?chapter=<?= $news->id() ?>"><?= $news->titre() ?></a></h1>
+					<div class="card simpleSection">
+						<div class="card-body listAll">
+							<h2><a href="index.php?action=news&chapter=<?= $news->id() ?>"><?= $news->titre() ?></a></h2>
 
 							<p>Posted on <?= $news->dateAjout() ?></p>
 							<br />
 							<p><?= $content ?></p>
-							<p><a href="viewpost.php?id=<?= $news->id() ?>">Lire plus</a></p>
+							<p><a href="index.php?action=news&chapter=<?= $news->id() ?>">Lire plus</a></p>
 						</div>
+					</div>
 				<?php
 			}
 			
