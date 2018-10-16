@@ -18,7 +18,7 @@ ob_start();
 			
 				<div>
 					<h2><?= $chapter->titre() ?></h2>
-					<p>Posted on <?= $chapter->dateAjout(); ?></p>
+					<p>Posté le <?= $chapter->dateAjout(); ?></p>
 					<br />
 					<div style="text-align:left !important; margin-left:10px;">
 						<p ><?= nl2br($chapter->contenu()); ?></p>
@@ -51,7 +51,7 @@ ob_start();
 						<section class="commentary">
 							<div>
 								<h3><?= $comment->auteur() ?></h3>
-								<p>Posted on <?= $comment->date_comm() ?></p>
+								<p>Posté le <?= $comment->date_comm() ?></p>
 								<br />
 								<p><?=  $comment->contenu() ?></p>
 							</div>
@@ -70,7 +70,7 @@ ob_start();
 			?>
 			<section style="text-align: center;">
 				<div>
-					<h3>Add a comment:</h3>
+					<h3>Ajouter un commentaire :</h3>
 
 					<form method="post" action="index.php?action=news&chapter=<?php echo $_GET['chapter']; ?>">
 						<p>

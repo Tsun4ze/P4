@@ -29,10 +29,10 @@ ob_start();
 						<div class="card-body listAll">
 							<h2><a href="index.php?action=news&chapter=<?= $news->id() ?>"><?= $news->titre() ?></a></h2>
 
-							<p>Posted on <?= $news->dateAjout() ?></p>
+							<p>Posté le <?= $news->dateAjout() ?></p>
 							<br />
 							<p><?= $content ?></p>
-							<p><a href="index.php?action=news&chapter=<?= $news->id() ?>">Lire plus</a></p>
+							<p><a href="index.php?action=news&chapter=<?= $news->id() ?>" class="btn btn-primary">Lire plus</a></p>
 						</div>
 					</div>
 				<?php
