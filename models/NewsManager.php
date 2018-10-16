@@ -20,6 +20,7 @@ class NewsManager extends Manager
 			'contenu' => $news->contenu()
 
 		));
+		
 	}
 
 	public function update(News $news)
@@ -32,6 +33,8 @@ class NewsManager extends Manager
 			'id' => $news->id()
 
 		));
+
+		
 	}
 
 	public function delete($id)
@@ -40,6 +43,7 @@ class NewsManager extends Manager
 		$req->execute(array(
 			'id' => $id
 		));
+		
 	}
 
 	public function getList($debut = -1, $limite = -1)

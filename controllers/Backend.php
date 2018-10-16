@@ -44,6 +44,8 @@ class Backend
         if(isset($_POST['supprCom']))
         {
             $manager->delete((int) $_POST['idCom']);
+            $session = new Session();
+		    $session->setFlash('Commentaire supprimé', 'warning');
         }
 
 
@@ -69,14 +71,18 @@ class Backend
                     ));
                     $newsManager->add($news);
 
+                    $session = new Session();
+		            $session->setFlash('Chapitre ajouté avec succès !', 'success');
                     header('Location: listenews.php');
                     exit();
                 }else{
-                    $errorAddNews = 'L\'article est vide';
+                    $session = new Session();
+		            $session->setFlash('N\'oubliez pas de remplir tout les champs !', 'danger');
                 }
                 
             }else{
-                $errorAddNews = 'Le titre est manquant';
+                $session = new Session();
+                $session->setFlash('N\'oubliez pas de remplir tout les champs !', 'danger');
             } 
         }
 
@@ -122,13 +128,16 @@ class Backend
 
                     ));
                     $newsManager->update($news);
-
+                    $session = new Session();
+		            $session->setFlash('Chapitre modifié avec succès !', 'success');
                 }
-                $errorAddNews = 'L\'article est vide';
+                $session = new Session();
+                $session->setFlash('N\'oubliez pas de remplir tout les champs !', 'danger');
 
             }
 
-            $errorAddNews = 'Le titre est manquant';
+            $session = new Session();
+            $session->setFlash('N\'oubliez pas de remplir tout les champs !', 'danger');
         }
 
 
@@ -148,6 +157,9 @@ class Backend
         if(isset($_POST['supprCom']))
         {
             $manager->delete((int) $_POST['idCom']);
+            $session = new Session();
+            $session->setFlash('Commentaire supprimé avec succès !', 'warning');
+
         }
 
 

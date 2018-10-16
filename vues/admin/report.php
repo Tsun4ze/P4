@@ -3,7 +3,7 @@ ob_start();
 
 ?>
 
-<section style="text-align:center;" class="simpleSection">
+<section style="text-align:center;" class="">
 	<?php
 	if(isset($confirmMsg))
 	{

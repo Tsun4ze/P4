@@ -3,7 +3,7 @@ ob_start();
 
 ?>
 
-<section class="simpleSection">
+<section class="">
 	<h2 class="admTitle">Liste de total des news :</h2>
 
 	<table style="width:100%;" class="table-bordered table-striped">

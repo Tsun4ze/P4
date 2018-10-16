@@ -20,7 +20,9 @@ ob_start();
 					<h2><?= $chapter->titre() ?></h2>
 					<p>Posted on <?= $chapter->dateAjout(); ?></p>
 					<br />
-					<p><?= nl2br($chapter->contenu()); ?></p>
+					<div style="text-align:left !important; margin-left:10px;">
+						<p ><?= nl2br($chapter->contenu()); ?></p>
+					</div>
 				</div>
 		
 
@@ -38,6 +40,8 @@ ob_start();
 				if(isset($_POST['report']))
 				{
 					$managerComm->report($_POST['idComment']);
+					$session = new Session();
+        			$session->setFlash('Commentaire signalé, merci.', 'warning');
 				}
 				foreach($managerComm->getComments((int) $_GET['chapter']) as $comment)
 				{
@@ -53,7 +57,7 @@ ob_start();
 							</div>
 
 							<div>
-								<form action="index.php?chapter=<?= $_GET['chapter'] ?>" method="post">
+								<form action="index.php?action=news&chapter=<?= $_GET['chapter'] ?>" method="post">
 									<input type="hidden" name="idComment" value="<?=  $comment->id() ?>" />
 									<input type="submit" name="report" value="Signaler" />
 								</form>
@@ -68,7 +72,7 @@ ob_start();
 				<div>
 					<h3>Add a comment:</h3>
 
-					<form method="post" action="viewpost.php?chapter=<?php echo $_GET['chapter']; ?>">
+					<form method="post" action="index.php?action=news&chapter=<?php echo $_GET['chapter']; ?>">
 						<p>
 							<input type="hidden" name="news" value="<?php echo $_GET['chapter'] ?>" />
 							<label for="auteur">Pseudo : </label><br /><input type="text" name="auteur" id="auteur" /><br />

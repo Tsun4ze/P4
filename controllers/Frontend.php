@@ -34,6 +34,8 @@ class Frontend
                     ));
                     $managerComm->add($addcomment);
 
+                    $session = new Session();
+                    $session->setFlash('Commentaire ajouté avec succès !', 'success');
                     header('Location: '.$_SERVER['HTTP_REFERER']);
                     exit();
                 }

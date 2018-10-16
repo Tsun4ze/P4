@@ -17,6 +17,8 @@ class CommentManager extends Manager
             'auteur' => $comment->auteur(),
             'contenu' => $comment->contenu()
         ));
+
+       
     }
 
     public function delete($id)
@@ -25,6 +27,7 @@ class CommentManager extends Manager
         $req->execute(array(
             'id' => $id
         ));
+        
     }
 
     public function getList()
@@ -83,5 +86,7 @@ class CommentManager extends Manager
         $req = $this->_db->prepare('UPDATE comments SET report = report + 1 WHERE id = :id');
         $req->bindValue(':id', (int) $id, PDO::PARAM_INT);
         $req->execute();
+        
     }
+    
 }
