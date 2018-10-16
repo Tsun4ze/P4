@@ -65,7 +65,7 @@ class Backend
                     
                     $newsManager = new NewsManager($db);
                     $news = new News(array(
-                        'auteur' => $_SESSION['pseudo'],
+                        'auteur' => 'admin',
                         'titre' => $_POST['title'],
                         'contenu' => $_POST['contentNews']
                     ));
@@ -73,7 +73,7 @@ class Backend
 
                     $session = new Session();
 		            $session->setFlash('Chapitre ajouté avec succès !', 'success');
-                    header('Location: listenews.php');
+                    header('Location: index.php?action=listNews');
                     exit();
                 }else{
                     $session = new Session();
@@ -131,13 +131,20 @@ class Backend
                     $session = new Session();
 		            $session->setFlash('Chapitre modifié avec succès !', 'success');
                 }
-                $session = new Session();
-                $session->setFlash('N\'oubliez pas de remplir tout les champs !', 'danger');
+                else
+                {
+                    $session = new Session();
+                    $session->setFlash('N\'oubliez pas de remplir tout les champs !', 'danger');
+                }
+                
 
             }
-
-            $session = new Session();
-            $session->setFlash('N\'oubliez pas de remplir tout les champs !', 'danger');
+            else
+            {
+                $session = new Session();
+                $session->setFlash('N\'oubliez pas de remplir tout les champs !', 'danger');
+            }
+            
         }
 
 
