@@ -21,7 +21,7 @@ section
 .simpleSection
 {
 	background-color: rgba(115, 115, 115, 0.5) !important;
-	max-width:45%;
+	width:45%;
 	
 	margin: 20px;
 	
@@ -38,6 +38,7 @@ section
 
 .newsAllTiles
 {
+	
 	margin-left: 10% !important;
 	margin-right: 5% !important;
 }
