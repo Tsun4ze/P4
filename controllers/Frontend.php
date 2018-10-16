@@ -61,5 +61,13 @@ class Frontend
         require 'vues/error/404.php';
     }
 
-   
+    public function author()
+    {
+        require 'vues/public/author.php';
+    }
+    
+    public function contact()
+    {
+        require 'vues/public/contact.php';
+    }
 }

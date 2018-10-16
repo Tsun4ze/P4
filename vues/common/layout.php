@@ -41,10 +41,10 @@ $session = new Session();
 				<div class="listeHeader">
 					<ul class="nav listeItem">
 						<li class="nav-item">
-							<h3><a href="#" class="nav-link">Auteur</a></h3>
+							<h3><a href="index.php?action=author" class="nav-link">Auteur</a></h3>
 						</li>
 						<li class="nav-item">
-							<h3><a href="#" class="nav-link">Contact</a></h3>
+							<h3><a href="index.php?action=contact" class="nav-link">Contact</a></h3>
 						</li>
 						<li class="nav-item">
 							<h3><a href="index.php?action=allnews" class="nav-link">Les chapitres</a></h3>

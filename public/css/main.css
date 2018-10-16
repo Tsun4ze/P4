@@ -102,7 +102,41 @@ section
 }
 /*=========================================================*/
 
+/*AUTHOR*/
+/*=========================================================*/
+.author
+{
+	height: 84vh;
+	
+}
+.profilPic
+{
+	margin:auto;
+	width:500px;
+	height: 500px;
+}
 
+.pPic
+{
+	height:500px;
+	border-radius: 50px;
+	border: 2px solid black;
+}
+
+.profilContent
+{
+	width: 50%;
+	margin:auto;
+}
+/*=========================================================*/
+
+/* CONTACT */
+/*=========================================================*/
+.contact
+{
+	height: 87vh;
+}
+/*=========================================================*/
 
 /*NEWS*/
 /*=========================================================*/
@@ -159,14 +193,12 @@ section
 
 .login
 {
-	background-color: rgba(115, 115, 115, 0.5) !important;
+	
 	max-width:45%;
-	
+	height: 79vh;
 	margin: auto;
+	margin-top: 150px !important;
 	
-	border: 1px solid black;
-	border-radius: 5px;
-	box-shadow: 2px 2px 5px black;
 }
 
 .panelAdm

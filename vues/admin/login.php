@@ -15,7 +15,7 @@ ob_start();
 				<label for="passLog">Password : </label><br />
 				<input type="password" name="passLog" id="passLog" /><br /><br />
 
-				<input type="submit" name="admLog" value="Connect" class="btnAdd" />
+				<input type="submit" name="admLog" value="Connect" class="btn btn-primary" />
 			</p>
 		</form>
 	</div>

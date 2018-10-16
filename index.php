@@ -55,6 +55,14 @@ try
 			$frontend->allChapter();
 		
 		}
+		elseif($_GET['action'] === 'author')
+		{
+			$frontend->author();
+		}
+		elseif($_GET['action'] === 'contact')
+		{
+			$frontend->contact();
+		}
 		/*  */
 		/* Admin part */
 		/*  */
@@ -110,7 +118,27 @@ try
 		{
 			if(isset($_SESSION['Adm']) && $_SESSION['Adm'] === 'admin')
 			{
-				$backend->update();
+
+				// Check if chapter exist in DB
+				$db = Database::dbconnect();
+				$idChapter = (int) $_GET['chapter'];
+				$req = $db->prepare("SELECT * FROM news WHERE id = :id");
+				$req->execute(array(
+					'id' => $idChapter
+				));
+				$row = $req->fetch();
+					
+				if($row['id'])
+				{
+					$backend->update();
+				}
+				else
+				{
+					$frontend->error();
+				}
+
+
+				
 			}
 			else
 			{
